@@ -159,7 +159,7 @@ m.route.param(&quot;file&quot;) === &quot;pictures/pic1.jpg&quot;
 m.route.param(&quot;date&quot;) === &quot;2014/01/20&quot;
 </code></pre>
 <p>Note that Mithril checks for route matches in the order the routes are defined, so you should put variadic routes at the bottom of the list to prevent them from matching other more specific routes.</p>
-<pre><code>m.route(document.body, &quot;/blog/archive/2014&quot;, {
+<pre><code class="lang-javascript">m.route(document.body, &quot;/blog/archive/2014&quot;, {
     &quot;/blog/:date...&quot;: Component1, //for the default path in the line above, this route matches first!
     &quot;/blog/archive/:year&quot;: Component2
 });
