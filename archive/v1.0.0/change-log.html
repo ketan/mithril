@@ -87,6 +87,7 @@
 <li><a href="#mroute-and-anchor-tags"><code>m.route</code> and anchor tags</a></li>
 <li><a href="#readingwriting-the-current-route">Reading/writing the current route</a></li>
 <li><a href="#accessing-route-params">Accessing route params</a></li>
+<li><a href="#buildingparsing-query-strings">Building/Parsing query strings</a></li>
 <li><a href="#preventing-unmounting">Preventing unmounting</a></li>
 <li><a href="#run-code-on-component-removal">Run code on component removal</a></li>
 <li><a href="#mrequest"><code>m.request</code></a></li>
@@ -381,6 +382,19 @@ m.route.set(&quot;/other/route&quot;)
         }
     }
 })
+</code></pre>
+<hr>
+<h2 id="buildingparsing-query-strings">Building/Parsing query strings</h2>
+<p><code>v0.2.x</code> used methods hanging off of <code>m.route</code>, <code>m.route.buildQueryString()</code> and <code>m.route.parseQueryString()</code>. In <code>v1.x</code> these have been broken out and attached to the root <code>m</code>.</p>
+<h3 id="v02x"><code>v0.2.x</code></h3>
+<pre><code class="lang-javascript">var qs = m.route.buildQueryString({ a : 1 });
+
+var obj = m.route.parseQueryString(&quot;a=1&quot;);
+</code></pre>
+<h3 id="v1x"><code>v1.x</code></h3>
+<pre><code class="lang-javascript">var qs = m.buildQueryString({ a : 1 });
+
+var obj = m.parseQueryString(&quot;a=1&quot;);
 </code></pre>
 <hr>
 <h2 id="preventing-unmounting">Preventing unmounting</h2>
