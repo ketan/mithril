@@ -91,6 +91,7 @@
 </ul>
 </li>
 <li><a href="#component-controller-function">Component <code>controller</code> function</a></li>
+<li><a href="#component-controller-returning-object">Component <code>controller</code> returning object</a></li>
 <li><a href="#component-arguments">Component arguments</a></li>
 <li><a href="#view-parameters"><code>view()</code> parameters</a></li>
 <li><a href="#passing-components-to-m">Passing components to <code>m()</code></a></li>
@@ -238,6 +239,32 @@ m.mount(document.body, {
         return m(&quot;p&quot;, state.fooga)
     }
 })
+</code></pre>
+<hr>
+<h2 id="component-controller-returning-object">Component <code>controller</code> returning object</h2>
+<p>In <code>v0.2.x</code> a <code>component</code>'s <code>controller</code> property could return an object that was passed into the <code>view</code>.</p>
+
+<p>Returning a controller object is no longer supported.</p>
+<h3 id="v02x"><code>v0.2.x</code></h3>
+<pre><code class="lang-javascript">var component = {
+    controller: function(args) {
+        return { name: 'Bob' };
+    },
+    view: function(ctrl, args) {
+        return m('div', ctrl.name);
+    }
+}
+</code></pre>
+<h3 id="v1x"><code>v1.x</code></h3>
+<pre><code class="lang-javascript">var component = {
+    oninit: function(vnode) {
+        this.name = 'Bob';
+    },
+    view: function(vnode) {
+        var ctrl = vnode.state;
+        return m('div', ctrl.name);
+    }
+}
 </code></pre>
 <hr>
 <h2 id="component-arguments">Component arguments</h2>
